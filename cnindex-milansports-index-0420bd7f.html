@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米兰体育 · 稳定聚合入口页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Hero 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0a0f1a 0%, #151f2f 50%, #1b2a3f 100%);
+            color: #f0f4fa;
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4a9eff, transparent);
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 690px;
+            margin: 0.5rem auto 0;
+            color: #b8c7e0;
+            font-weight: 350;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(74, 158, 255, 0.18);
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #91b9f0;
+            margin-top: 1.2rem;
+            border: 1px solid rgba(74, 158, 255, 0.25);
+            backdrop-filter: blur(2px);
+        }
+
+        /* 主体内容区 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem;
+        }
+
+        /* 优势区 —— 卡片网格 */
+        .grid-advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2.8rem 0 3.2rem;
+        }
+
+        .advantage-card {
+            background: #ffffff;
+            padding: 1.8rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            border: 1px solid #edf1f7;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+        }
+
+        .advantage-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+
+        .advantage-card p {
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        /* 说明区 + 混合排版 */
+        .section-block {
+            margin: 2.2rem 0;
+        }
+
+        .section-block h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            border-left: 5px solid #4a9eff;
+            padding-left: 1rem;
+        }
+
+        .section-block p {
+            margin-bottom: 1rem;
+            color: #2d394a;
+            font-size: 1.02rem;
+        }
+
+        .section-block a {
+            color: #1d6bc7;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #a0c4f0;
+            transition: color 0.15s, border-bottom-color 0.15s;
+        }
+
+        .section-block a:hover {
+            color: #0a3f7a;
+            border-bottom-color: #0a3f7a;
+        }
+
+        .highlight-box {
+            background: #eef3fb;
+            padding: 1.5rem 2rem;
+            border-radius: 18px;
+            margin: 1.8rem 0;
+            border-left: 4px solid #4a9eff;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.4rem;
+        }
+
+        /* FAQ 摘要区 ———— 简洁折叠感 */
+        .faq-mini {
+            background: #ffffff;
+            padding: 1.6rem 2rem 1.2rem;
+            border-radius: 24px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+            margin: 2.8rem 0 2rem;
+            border: 1px solid #e2e9f2;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #0b1a2f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eaeef5;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .question {
+            font-weight: 500;
+            color: #152b44;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .answer {
+            color: #4a5a72;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-item .answer a {
+            color: #1d6bc7;
+            text-decoration: underline dotted 1px;
+            font-weight: 400;
+        }
+
+        /* 底部链接区域 */
+        .footer-links {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #dce3ed;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.2rem;
+            font-size: 0.9rem;
+            color: #4b5c72;
+        }
+
+        .footer-links .brand {
+            font-weight: 500;
+            color: #152b44;
+        }
+
+        .footer-links a {
+            color: #1d6bc7;
+            text-decoration: none;
+            border-bottom: 1px dotted #b7ceec;
+            margin: 0 0.3rem;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #0a3f7a;
+        }
+
+        .footer-links .legal {
+            font-size: 0.85rem;
+            color: #5f7188;
+        }
+
+        .footer-links .legal a {
+            color: #4a6a90;
+        }
+
+        /* 响应式润色 */
+        @media (max-width: 700px) {
+            .hero {
+                padding: 3.2rem 1rem 2.8rem;
+            }
+
+            .container {
+                padding: 1.8rem 1rem 3rem;
+            }
+
+            .faq-mini {
+                padding: 1.2rem 1.2rem 0.8rem;
+            }
+
+            .grid-advantages {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .highlight-box {
+                padding: 1rem 1.2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .section-block h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO 深色区 -->
+    <section class="hero">
+        <h1>米兰体育 · 稳定聚合</h1>
+        <p>一个侧重呈现与引导的页面入口，为日常使用提供更安静的访问路径。</p>
+        <span class="tagline">轻量 · 直接 · 无干扰</span>
+    </section>
+
+    <div class="container">
+
+        <!-- 优势区：四张卡片 -->
+        <div class="grid-advantages">
+            <div class="advantage-card">
+                <div class="icon">🧭</div>
+                <h3>明确指向</h3>
+                <p>页面结构清晰，从介绍到链接都保持一致，降低重复寻找的认知负担。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="icon">⚙️</div>
+                <h3>简洁维护</h3>
+                <p>没有冗余组件，信息层级干净，适合作为固定书签或快速跳转的中转页。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="icon">🔒</div>
+                <h3>环境友好</h3>
+                <p>页面强调信息展示本身，不加载外部资源，适配多种网络环境。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="icon">📄</div>
+                <h3>平实叙述</h3>
+                <p>用生活化的语气组织内容，不夸张不诱导，保持正式页面的可信质感。</p>
+            </div>
+        </div>
+
+        <!-- 说明区 + 嵌入链接自然句子 -->
+        <div class="section-block">
+            <h2>关于这个页面</h2>
+            <p>
+                这是一个为 <a href="https://cnindex-milansports.com">米兰体育</a> 制作的入口页，你也可以把它当作一个固定的说明页来使用。
+                页面没有复杂脚本，不追踪任何行为，只提供基础介绍、常见问题摘要和指向主站的链接。
+            </p>
+            <p>
+                如果你是通过搜索或朋友分享找到这里，下面几段内容可以帮助你快速了解。整个页面围绕“稳定入口”设计，无论你是第一次接触还是老访客，都能在几秒内找到最重要的信息。
+            </p>
+            <div class="highlight-box">
+                <p><strong>💡 日常使用建议：</strong> 将本页加入浏览器书签或设备主屏幕，当作快速跳板。所有指向主站的内容均通过一个链接完成 —— 即 <a href="https://cnindex-milansports.com">米兰体育</a>，无需记忆复杂地址。</p>
+            </div>
+            <p>
+                页面结构包含 hero 标题、特点卡片、说明段落和 FAQ 摘要，底部保留必要链接。内容全部使用中文，语气偏向日常交流但保持正式感。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要区（典型问题 & 回答） -->
+        <div class="faq-mini">
+            <h3>❓ 常见问题摘要</h3>
+            <div class="faq-item">
+                <div class="question">这个页面和主站是什么关系？</div>
+                <div class="answer">本页是介绍与导航页，不替代主站功能。所有操作最终都通过 <a href="https://cnindex-milansports.com">米兰体育</a> 完成。</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">为什么需要这样一个中间页？</div>
+                <div class="answer">方便固定入口、减少记忆成本，尤其适合在设备之间同步书签或快速向朋友说明用途。</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">页面内容会经常变化吗？</div>
+                <div class="answer">不会。本页保持相对稳定，只做必要的文字优化或结构微调，避免频繁变动造成困惑。</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">怎样确保链接一直有效？</div>
+                <div class="answer">链接指向主域名 <code>cnindex-milansports.com</code>，建议定期通过 <a href="https://cnindex-milansports.com">米兰体育</a> 确认访问正常。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接区 -->
+        <div class="footer-links">
+            <div class="brand">
+                <span>⏺ 米兰体育 · 索引页</span>
+            </div>
+            <div>
+                <a href="https://cnindex-milansports.com">米兰体育</a> 
+                <span class="legal">· 简单入口 · 内容仅供参考</span>
+            </div>
+            <div class="legal">
+                <span>© 2025 · 非官方静态页 · 仅做导航说明</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
